@@ -1,11 +1,15 @@
 from core.llm import gemini_llm
+import random
+
+
 
 def generate_viva_questions(retrieved_chunks, num_questions=5):
+    seed = random.randint(100000, 999999)
     context = "\n\n".join(retrieved_chunks)
 
     prompt = f"""
 You are a strict university viva voce examiner.
-
+RANDOM_SEED: {seed}
 You are examining a student on a specific research paper.
 Your job is to test DEEP understanding, not memorization.
 
